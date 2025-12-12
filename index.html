@@ -232,7 +232,7 @@
 
   showQrBtn.addEventListener('click', ()=>{
     // change this to your public URL once deployed
-    const pageUrl = prompt('دخل الرابط العمومي للمينيو (مثال: https://username.github.io/menu/) — بعد ما تنشر الصفحة على GitHub Pages', window.location.href);
+    const pageUrl = prompt('دخل الرابط العمومي للمينيو (مثال: https://chekenlacanyada.netlify.app/s', window.location.href);
     if(!pageUrl) return;
     const qrUrl = `https://chart.googleapis.com/chart?cht=qr&chs=300x300&chl=${encodeURIComponent(pageUrl)}`;
     qrImg.src = qrUrl;
