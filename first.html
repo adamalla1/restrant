@@ -1,49 +1,193 @@
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<html lang="ar" dir="rtl">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Chicken La Canyada - Landing Page</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Chicken La Canyada — Menu</title>
+<style>
+  :root{
+    --yellow: #ffd400; /* أصفر قوي */
+    --black: #0b0b0b;
+    --muted: #3a3a3a;
+    --card: #ffffff;
+  }
+  *{box-sizing:border-box}
+ body{
+  margin:0;
+  font-family: "Segoe UI", Tahoma, Arial, sans-serif;
+  background: url('background.png') center center / cover no-repeat fixed;
+  color:var(--black);
+}
 
-    body {
-      font-family: 'Arial', sans-serif;
-      line-height: 1.6;
-      color: #333;
-      background: linear-gradient(180deg, rgba(17,17,17,0.8) 0%, rgba(11,11,11,0.8) 4%, rgba(11,11,11,0.8) 10%, rgba(255,255,255,0.9) 10%), url('background.png') center/cover no-repeat;
-    }
+  .hero{
+    background: var(--yellow);
+    padding:20px 16px;
+    display:flex;
+    gap:12px;
+    align-items:center;
+    border-bottom:6px solid var(--black);
+  }
+  .logo{
+    width:96px;height:96px;border-radius:12px;overflow:hidden;flex-shrink:0;border:4px solid var(--black);
+    background:#fff center/cover no-repeat;
+  }
+  .brand{
+    display:flex;flex-direction:column;gap:6px;
+  }
+  .brand h1{margin:0;font-size:22px;color:var(--black);letter-spacing:0.6px}
+  .brand p{margin:0;color:var(--muted);font-size:13px}
+  .contact-btn{
+    background:var(--black);color:var(--yellow);border:0;padding:10px 12px;border-radius:10px;font-weight:700;text-decoration:none;
+    box-shadow:0 6px 18px rgba(0,0,0,0.18);margin-left:auto;
+  }
 
-        header {
-            background-color: #ffd400;
-            padding: 1rem 2rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            position: fixed;
-            width: 100%;
-            top: 0;
-            z-index: 1000;
-        }
+  .container{max-width:760px;margin:18px auto;padding:0 16px;}
 
-        .logo {
-            font-size: 1.8rem;
-            font-weight: bold;
-            color: black;
-        }
+  .controls{display:flex;gap:8px;align-items:center;justify-content:space-between;margin-bottom:12px}
+  .search{flex:1;margin-left:8px}
+  .search input{width:100%;padding:10px 12px;border-radius:10px;border:2px solid #f0f0f0;font-size:14px}
+  .btn{
+    background:var(--black);color:var(--yellow);border:0;padding:10px 12px;border-radius:10px;font-weight:700;cursor:pointer;
+    box-shadow:0 6px 18px rgba(0,0,0,0.18)
+  }
+  .btn.ghost{background:transparent;color:var(--black);border:2px solid var(--black);font-weight:700}
 
-        nav ul {
+  .grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+  .menu-card{background:var(--card);border-radius:12px;padding:12px;display:flex;gap:12px;align-items:center;
+        box-shadow:0 6px 20px rgba(3,3,3,0.06);border-left:6px solid var(--yellow)}
+  .thumb{width:110px;height:80px;border-radius:8px;background:#eee center/cover no-repeat;flex-shrink:0}
+  .info{flex:1}
+  .title{font-weight:800;font-size:16px;color:var(--black)}
+  .desc{font-size:13px;color:var(--muted);margin-top:6px}
+  .meta{display:flex;align-items:center;justify-content:space-between;margin-top:10px}
+  .price{font-weight:900;color:var(--black)}
+  .add{background:var(--yellow);color:var(--black);border:0;padding:8px 10px;border-radius:8px;cursor:pointer;font-weight:800}
+
+  /* Cart mini at bottom right */
+  .cart-btn{position:fixed;right:16px;bottom:16px;background:var(--black);color:var(--yellow);padding:12px;border-radius:12px;border:0;box-shadow:0 12px 30px rgba(0,0,0,0.35);z-index:50}
+  .cart-panel{position:fixed;right:16px;bottom:72px;width:320px;background:#fff;border-radius:12px;padding:10px;box-shadow:0 12px 40px rgba(0,0,0,0.25);max-height:60vh;overflow:auto;display:none;z-index:60}
+  .cart-panel h3{margin:0 0 8px 0;color:var(--black)}
+  .cart-item{display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px dashed #f2f2f2}
+  .cart-footer{display:flex;justify-content:space-between;padding-top:8px;font-weight:800}
+
+.card {
+  max-width: fit-content;
+  border-radius: 15px;
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  justify-content: center;
+  gap: 1rem;
+  backdrop-filter: blur(15px);
+  box-shadow: inset 0 0 20px rgba(255, 255, 255, 0.192),
+    inset 0 0 5px rgba(255, 255, 255, 0.274), 0 5px 5px rgba(0, 0, 0, 0.164);
+  transition: 0.5s;
+}
+
+.card:hover {
+  animation: ease-out 5s;
+  background: rgba(173, 173, 173, 0.05);
+}
+
+.card ul {
+  padding: 1rem;
+  display: flex;
+  list-style: none;
+  gap: 1rem;
+  align-items: center;
+  justify-content: center;
+  align-content: center;
+  flex-wrap: wrap;
+  flex-direction: column;
+}
+
+.card ul li {
+  cursor: pointer;
+}
+
+.svg {
+  transition: all 0.3s;
+  /* if you find some problems change w - h : 30px*/
+  padding: 1rem;
+  height: 60px;
+  width: 60px;
+  border-radius: 100%;
+  color: rgb(255, 174, 0);
+  fill: currentColor;
+  box-shadow: inset 0 0 20px rgba(255, 255, 255, 0.3),
+    inset 0 0 5px rgba(255, 255, 255, 0.5), 0 5px 5px rgba(0, 0, 0, 0.164);
+}
+
+.text {
+  opacity: 0;
+  border-radius: 5px;
+  padding: 5px;
+  transition: all 0.3s;
+  color: rgb(255, 174, 0);
+  background-color: rgba(255, 255, 255, 0.3);
+  position: absolute;
+  z-index: 9999;
+  box-shadow: -5px 0 1px rgba(153, 153, 153, 0.2),
+    -10px 0 1px rgba(153, 153, 153, 0.2),
+    inset 0 0 20px rgba(255, 255, 255, 0.3),
+    inset 0 0 5px rgba(255, 255, 255, 0.5), 0 5px 5px rgba(0, 0, 0, 0.082);
+}
+
+/*isometric prooyection*/
+.iso-pro {
+  transition: 0.5s;
+}
+.iso-pro:hover a > .svg {
+  transform: translate(15px, -15px);
+  border-radius: 100%;
+}
+
+.iso-pro:hover .text {
+  opacity: 1;
+  transform: translate(25px, -2px) skew(-5deg);
+}
+
+.iso-pro:hover .svg {
+  transform: translate(5px, -5px);
+}
+
+.iso-pro span {
+  opacity: 0;
+  position: absolute;
+  color: #1877f2;
+  border-color: #1877f2;
+  box-shadow: inset 0 0 20px rgba(255, 255, 255, 0.3),
+    inset 0 0 5px rgba(255, 255, 255, 0.5), 0 5px 5px rgba(0, 0, 0, 0.164);
+  border-radius: 50%;
+  transition: all 0.3s;
+  height: 60px;
+  width: 60px;
+}
+
+.iso-pro:hover span {
+  opacity: 1;
+}
+
+.iso-pro:hover span:nth-child(1) {
+  opacity: 0.2;
+}
+
+.iso-pro:hover span:nth-child(2) {
+  opacity: 0.4;
+  transform: translate(5px, -5px);
+}
+
+.iso-pro:hover span:nth-child(3) {
+  opacity: 0.6;
+  transform: translate(10px, -10px);
+}
+ nav ul {
             list-style: none;
             display: flex;
             gap: 2rem;
         }
-
-        nav a {
-            color: black;
+ nav a {
+            color: hsl(0, 3%, 7%);
             text-decoration: none;
             font-weight: 500;
             transition: color 0.3s;
@@ -53,122 +197,368 @@
             color: #E67E22;
         }
 
-        .showcase {
-            height: 100vh;
-            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://images.unsplash.com/photo-1555939594-58d7cb561ad1?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80') center/cover no-repeat;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            padding: 0 2rem;
-            color: #FDF2E9;
-        }
+  /* small screens */
+  @media (max-width:800px){
+    .grid{grid-template-columns:1fr}
+    .logo{width:80px;height:80px}
+    .hero{padding:14px; flex-direction:column; gap:10px; text-align:center}
+    .brand h1{font-size:18px}
+    .brand p{font-size:12px}
+    .nav{position:static; background:none; padding:0; box-shadow:none; margin-top:10px}
+    .nav a{color:var(--black); padding:5px 8px; font-size:14px}
+    .nav a:hover{background:var(--yellow); color:var(--black)}
+    .container{padding:0 10px}
+    .controls{flex-direction:column; gap:10px}
+    .search{margin-left:0}
+    .search input{font-size:14px; padding:8px 10px}
+    .btn{font-size:14px; padding:8px 10px}
+    .menu-card{padding:10px; flex-direction:column; text-align:center}
+    .thumb{width:100%; height:120px}
+    .info{gap:8px}
+    .title{font-size:14px}
+    .desc{font-size:12px}
+    .meta{flex-direction:column; gap:8px}
+    .price{font-size:14px}
+    .add{font-size:14px; padding:6px 8px}
+    .cart-btn{bottom:10px; right:10px; padding:10px; font-size:12px}
+    .cart-panel{right:10px; left:10px; width:auto; bottom:60px}
+    .cart-panel h3{font-size:16px}
+    .cart-item{font-size:14px}
+    .cart-footer{font-size:14px}
+    .btn{font-size:14px}
+    .about-section, .gallery-section{padding:20px 10px}
+    .about-section h2{font-size:20px}
+    .about-section p{font-size:14px}
+    .gallery-section h2{font-size:20px}
+    .gallery-section .grid{grid-template-columns:repeat(auto-fit,minmax(150px,1fr)); gap:10px}
+    .gallery-section img{height:120px}
+    footer{margin:10px 0}
+    .card ul{gap:10px}
+    .card ul li .svg{height:50px; width:50px; padding:8px}
+    .card ul li .text{font-size:12px}
+    .iso-pro span{height:50px; width:50px}
+  }
+  @keyframes pop {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.25); }
+  100% { transform: scale(1); }
+}
 
-        .showcase h1 {
-            font-size: 3rem;
-            margin-bottom: 1rem;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-        }
+.add.added {
+  animation: pop 0.3s ease;
+}
+@media (max-width: 600px){
 
-        .showcase p {
-            font-size: 1.2rem;
-            margin-bottom: 2rem;
-            max-width: 600px;
-            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
-        }
+  body{
+    background-attachment: scroll; /* fixed كتخربق فبعض التليفونات */
+  }
 
-        .buttons {
-            display: flex;
-            gap: 1rem;
-            flex-wrap: wrap;
-            justify-content: center;
-        }
+  .container{
+    margin: 12px auto;
+    padding: 12px;
+  }
 
-        .btn {
-            padding: 0.8rem 2rem;
-            border: none;
-            border-radius: 5px;
-            font-size: 1rem;
-            font-weight: bold;
-            cursor: pointer;
-            transition: all 0.3s;
-            text-decoration: none;
-            display: inline-block;
-        }
+  input,
+  textarea,
+  select,
+  button{
 
-        .btn-primary {
-            background-color: #E67E22;
-            color: #FDF2E9;
-        }
+    font-size: 16px; /* مهم باش ما يديرش zoom iOS */
+    padding: 12px;
+    border-radius: 12px;
+  }
 
-        .btn-primary:hover {
-            background-color: #D35400;
-            transform: translateY(-2px);
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-        }
+  .menu-card{
+    flex-direction: column;
+    align-items: stretch;
+  }
 
-        .btn-secondary {
-            background-color: transparent;
-            color: #FDF2E9;
-            border: 2px solid #FDF2E9;
-        }
+  .thumb{
+    width: 100%;
+    height: 160px;
+  }
 
-        .btn-secondary:hover {
-            background-color: #FDF2E9;
-            color: #D35400;
-            transform: translateY(-2px);
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-        }
+  .meta{
+    gap: 10px;
+  }
 
-        @media (max-width: 768px) {
-            header {
-                flex-direction: column;
-                gap: 1rem;
-            }
+  .add{
+    width: 100%;
+    padding: 14px;
+    font-size: 18px;
+  }
 
-            nav ul {
-                gap: 1rem;
-            }
+  .cart-btn{
+    right: 12px;
+    bottom: 12px;
+    padding: 14px;
+    font-size: 15px;
+  }
 
-            .showcase h1 {
-                font-size: 2rem;
-            }
+  .cart-panel{
+    left: 10px;
+    right: 10px;
+    width: auto;
+    max-height: 70vh;
+  }
 
-            .showcase p {
-                font-size: 1rem;
-            }
+  nav ul{
+    flex-wrap: wrap;
+    gap: 12px;
+    justify-content: center;
+  }
+}
 
-            .buttons {
-                flex-direction: column;
-                align-items: center;
-            }
 
-            .btn {
-                width: 200px;
-            }
-        }
-    </style>
+</style>
 </head>
 <body>
-    <header>
-        <div class="logo">Chicken La Canyada</div>
-        <nav>
+
+  <!-- Hero (yellow + black) -->
+  <header class="hero">
+    <div class="logo" id="logo" style="background-image:url(logo.png);"></div>
+    <div class="brand">
+      <h1 id="restoName">Chicken La Canyada</h1>
+      <p>قائمة الأطباق — طازج، سريع، بنكهة</p>
+    </div>
+    <nav>
             <ul>
-                <li><a href="index.html#about">About</a></li>
-                <li><a href="index.html#gallery">Gallery</a></li>
                 <li><a href="contact.html">Contact</a></li>
+                <li><a href="first.html#gallery">Gallery</a></li>
+                <li><a href="first.html#about">About</a></li>
+                <li><a href="index.html">Home</a></li>
+
             </ul>
         </nav>
-    </header>
+  </header>
 
-    <section class="showcase">
-        <h1>Taste the Grilled Perfection</h1>
-        <p>Savor our signature chicken dishes, made fresh daily with authentic recipes and premium ingredients.</p>
-        <div class="buttons">
-            <a href="index.html" class="btn btn-primary">Explore Menu</a>
-            <a href="contact.html" class="btn btn-secondary">Book a Table</a>
-        </div>
+  <main class="container">
+    <div class="controls">
+      <div class="search"><input id="search" placeholder="قلب على طبق أو مكون..." /></div>
+      <div style="width:140px;text-align:left">
+        <select id="category" style="width:100%;padding:10px;border-radius:10px;border:2px solid #f0f0f0">
+          <option value="all">الكل</option>
+          <option value="starters">مقبلات</option>
+          <option value="mains">أطباق رئيسية</option>
+          <option value="desserts">حلويات</option>
+          <option value="drinks">مشروبات</option>
+        </select>
+      </div>
+    </div>
+
+    <section id="menuGrid" class="grid">
+      <!-- Items injected by JS -->
     </section>
+  </main>
+
+  <!-- About Section -->
+  <section id="about" style="padding:40px 16px;background:#f9f9f9;text-align:center;">
+    <h2 style="color:var(--black);margin-bottom:20px;">About Chicken La Canyada</h2>
+    <p style="max-width:600px;margin:0 auto;color:var(--muted);line-height:1.6;">
+      Welcome to Chicken La Canyada, where passion for authentic flavors meets culinary excellence. Our restaurant specializes in grilled chicken dishes made with fresh ingredients and traditional recipes. We pride ourselves on serving delicious, high-quality meals in a warm and inviting atmosphere. Whether you're dining in or ordering takeout, we guarantee a memorable experience.
+    </p>
+  </section>
+
+  <!-- Gallery Section -->
+  <section id="gallery" style="padding:40px 16px;background:#fff;text-align:center;">
+    <h2 style="color:var(--black);margin-bottom:20px;">Gallery</h2>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px;max-width:800px;margin:0 auto;">
+      <img src="g.png" alt="Grilled Chicken" style="width:100%;height:150px;object-fit:cover;border-radius:8px;">
+      <img src="c.png" alt="Chicken Wings" style="width:100%;height:150px;object-fit:cover;border-radius:8px;">
+      <img src="f.png" alt="Fries" style="width:100%;height:150px;object-fit:cover;border-radius:8px;">
+      <img src="B.png" alt="Chicken Burger" style="width:100%;height:150px;object-fit:cover;border-radius:8px;">
+      <img src="lemonde.png" alt="Lemonade" style="width:100%;height:150px;object-fit:cover;border-radius:8px;">
+      <img src="br.png" alt="Brownie" style="width:100%;height:150px;object-fit:cover;border-radius:8px;">
+    </div>
+  </section>
+
+  <!-- Cart button and panel -->
+  <button class="cart-btn" id="cartToggle">Cart 🧾 (<span id="cartCount">0</span>)</button>
+  <aside class="cart-panel" id="cartPanel">
+    <h3>قائمة الطلب</h3>
+    <div id="cartItems"></div>
+    <div class="cart-footer"><span>المجموع</span><span id="cartTotal">0 MAD</span></div>
+    <div style="display:flex;gap:8px;margin-top:8px">
+      <button class="btn" id="waOrder">طلب بـ WhatsApp</button>
+      <button class="btn ghost" id="clearCart">مسح</button>
+    </div>
+  </aside>
+
+
+
+<script>
+  // sample menu - بدّل هادي بحسب لائحة المطعم ديالك
+  const menu = [
+    {id:1, category:'mains', name:'Chicken Special', desc:'دجاج مشوي بتتبيلة خاصة', price:68, img:'g.png'},
+    {id:2, category:'mains', name:'Grilled Wings', desc:'أجنحة مشوية حارة/عادية', price:45, img:'c.png'},
+    {id:3, category:'starters', name:'Fries', desc:'بطاطا مقلية مقرمشة', price:8, img:'f.png'},
+    {id:4, category:'drinks', name:'Lemonade', desc:'ليمونادة طبيعية', price:12, img:'lemonde.png'},
+    {id:5, category:'desserts', name:'Brownie', desc:'براوني بالشكلاط', price:20, img:'br.png'},
+    {id:6, category:'mains', name:'Chicken Burger', desc:'برجر الدجاج مع صوص خاص', price:52, img:'B.png'},
+    {id:7, category:'mains', name:'Chicken special ', desc:'برجر الدجاج ', price:62, img:'B.png'},
+    {id:8, category:'desserts', name:'Brownie', desc:'براوني بالشكلاط', price:20, img:'br.png'},
+    {id:9, category:'drinks', name:'Lemonade', desc:'ليمونادة طبيعية', price:12, img:'lemonde.png'},
+    {id:10, category:'starters', name:'Fries', desc:'بطاطا مقلية مقرمشة', price:8, img:'f.png'},
+  ];
+
+  // state
+  let cart = [];
+
+  // render menu
+  const grid = document.getElementById('menuGrid');
+  function renderMenu(list){
+    grid.innerHTML = '';
+    list.forEach(it=>{
+      const el = document.createElement('div');
+      el.className = 'menu-card';
+      el.innerHTML = `
+        <div class="thumb" style="background-image:url('${it.img}');"></div>
+        <div class="info">
+          <div class="title">${it.name}</div>
+          <div class="desc">${it.desc}</div>
+          <div class="meta">
+            <div class="price">${it.price} MAD</div>
+            <div>
+              <button class="add" data-id="${it.id}">+</button>
+            </div>
+          </div>
+        </div>
+      `;
+      grid.appendChild(el);
+    });
+  }
+  renderMenu(menu);
+  
+
+  // filters
+  document.getElementById('search').addEventListener('input', applyFilters);
+  document.getElementById('category').addEventListener('change', applyFilters);
+  function applyFilters(){
+    const q = document.getElementById('search').value.trim().toLowerCase();
+    const cat = document.getElementById('category').value;
+    let list = menu.filter(m=> (cat==='all' || m.category===cat) );
+    if(q) list = list.filter(m=> m.name.toLowerCase().includes(q) || m.desc.toLowerCase().includes(q));
+    renderMenu(list);
+  }
+
+  // add to cart
+  grid.addEventListener('click', e=>{
+if(e.target.matches('.add')){
+  const btn = e.target;
+  const id = Number(btn.dataset.id);
+  const item = menu.find(x=>x.id===id);
+
+  addToCart(item);
+
+  btn.classList.add('added');
+  setTimeout(()=>btn.classList.remove('added'),300);
+}
+
+  });
+  function addToCart(item){
+    const found = cart.find(c=>c.id===item.id);
+    if(found) found.qty++;
+    else cart.push({...item, qty:1});
+    renderCart();
+  }
+
+  // render cart
+  function renderCart(){
+    const itemsEl = document.getElementById('cartItems');
+    itemsEl.innerHTML = '';
+    let total = 0;
+    cart.forEach(i=>{
+      total += i.price * i.qty;
+      const div = document.createElement('div');
+      div.className = 'cart-item';
+      div.innerHTML = `<div>${i.name} x ${i.qty}</div><div>${i.price * i.qty} MAD</div>`;
+      itemsEl.appendChild(div);
+    });
+    document.getElementById('cartCount').textContent = cart.reduce((s,i)=>s+i.qty,0);
+    document.getElementById('cartTotal').textContent = total + ' MAD';
+  }
+
+  // cart toggle / clear
+  document.getElementById('cartToggle').addEventListener('click', ()=>{
+    const panel = document.getElementById('cartPanel');
+    panel.style.display = panel.style.display === 'block' ? 'none' : 'block';
+  });
+  document.getElementById('clearCart').addEventListener('click', ()=>{ cart = []; renderCart(); });
+
+  // WhatsApp order - redirect to contact page
+  document.getElementById('waOrder').addEventListener('click', ()=>{
+    if(cart.length===0){ alert('العربة خاوية'); return; }
+    localStorage.setItem('cart', JSON.stringify(cart));
+    window.location.href = 'contact.html';
+  });
+  
+
+  // Download / Print
+  document.getElementById('downloadBtn').addEventListener('click', ()=> window.print());
+
+  // QR generation: uses Google Chart API (بدّل الرابط إلى الرابط الحقيقي بعد ما تنشر الصفحة)
+  const showQrBtn = document.getElementById('showQrBtn');
+  const qrModal = document.getElementById('qrModal');
+  const qrImg = document.getElementById('qrImg');
+  const closeQr = document.getElementById('closeQr');
+
+  showQrBtn.addEventListener('click', ()=>{
+    // change this to your public URL once deployed
+    const pageUrl = prompt('دخل الرابط العمومي للمينيو (مثال: https://username.github.io/menu/) — بعد ما تنشر الصفحة على GitHub Pages', window.location.href);
+    if(!pageUrl) return;
+    const qrUrl = `https://chart.googleapis.com/chart?cht=qr&chs=300x300&chl=${encodeURIComponent(pageUrl)}`;
+    qrImg.src = qrUrl;
+    qrModal.style.display = 'flex';
+  });
+  closeQr.addEventListener('click', ()=> qrModal.style.display = 'none');
+  qrModal.addEventListener('click', (e)=>{ if(e.target === qrModal) qrModal.style.display = 'none' });
+
+  // small: let user change name/logo quickly (optional)
+  // If you want to set name/logo from JS, uncomment below and change values
+  // document.getElementById('restoName').textContent = 'اسم المطعم ديالك';
+  // document.getElementById('logo').style.backgroundImage = "url('hero.jpg')";
+</script>
+
+<footer style="text-align:center;margin:20px 0;">
+  <div class="card">
+    <ul>
+      <li class="iso-pro">
+        <a href="https://www.facebook.com/ChickenLaCanyada" target="_blank">
+          <svg class="svg" viewBox="0 0 24 24">
+            <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+          </svg>
+          <span class="text">Facebook</span>
+        </a>
+        <span></span>
+        <span></span>
+        <span></span>
+      </li>
+      <li class="iso-pro">
+        <a href="https://www.instagram.com/ChickenLaCanyada" target="_blank">
+          <svg class="svg" viewBox="0 0 24 24">
+            <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+          </svg>
+          <span class="text">Instagram</span>
+        </a>
+        <span></span>
+        <span></span>
+        <span></span>
+      </li>
+      <li class="iso-pro">
+        <a href="https://wa.me/1234567890" target="_blank">
+          <svg class="svg" viewBox="0 0 24 24">
+            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893A11.821 11.821 0 0020.885 3.488"/>
+          </svg>
+          <span class="text">WhatsApp</span>
+        </a>
+        <span></span>
+        <span></span>
+        <span></span>
+      </li>
+    </ul>
+  </div>
+  <p>&copy; 2023 Chicken La Canyada. جميع الحقوق محفوظة.</p>
+</footer>
 </body>
 </html>
+
