@@ -12,7 +12,13 @@
     --card: #ffffff;
   }
   *{box-sizing:border-box}
-  body{margin:0;font-family: "Segoe UI", Tahoma, Arial, sans-serif;background:linear-gradient(180deg,#111 0%, #0b0b0b 4%, #0b0b0b 10%, #fff 10%);color:var(--black);}
+ body{
+  margin:0;
+  font-family: "Segoe UI", Tahoma, Arial, sans-serif;
+  background: url('background.png') center center / cover no-repeat fixed;
+  color:var(--black);
+}
+
   .hero{
     background: var(--yellow);
     padding:20px 16px;
@@ -47,7 +53,7 @@
   .btn.ghost{background:transparent;color:var(--black);border:2px solid var(--black);font-weight:700}
 
   .grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
-  .card{background:var(--card);border-radius:12px;padding:12px;display:flex;gap:12px;align-items:center;
+  .menu-card{background:var(--card);border-radius:12px;padding:12px;display:flex;gap:12px;align-items:center;
         box-shadow:0 6px 20px rgba(3,3,3,0.06);border-left:6px solid var(--yellow)}
   .thumb{width:110px;height:80px;border-radius:8px;background:#eee center/cover no-repeat;flex-shrink:0}
   .info{flex:1}
@@ -56,6 +62,74 @@
   .meta{display:flex;align-items:center;justify-content:space-between;margin-top:10px}
   .price{font-weight:900;color:var(--black)}
   .add{background:var(--yellow);color:var(--black);border:0;padding:8px 10px;border-radius:8px;cursor:pointer;font-weight:800}
+  .add{
+  background: var(--yellow);
+  color: var(--black);
+  border: 0;
+  padding: 8px 12px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 800;
+
+  transition: 
+    transform 0.2s ease,
+    box-shadow 0.2s ease,
+    background 0.2s ease;
+}
+
+/* Hover (دوران الماوس) */
+.add:hover{
+  transform: scale(1.15) rotate(-5deg);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.25);
+  background: #ffea70;
+}
+
+/* Click (وقت الضغط) */
+.add:active{
+  transform: scale(0.95);
+}
+.add{
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease,
+    background 0.2s ease;
+}
+
+.add:hover{
+  transform: scale(1.15) rotate(-5deg);
+  background: #ffea70;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+}
+
+/* Pop animation */
+@keyframes pop {
+  0%{transform:scale(1)}
+  50%{transform:scale(1.3)}
+  100%{transform:scale(1)}
+}
+
+.add.added{
+  animation: pop 0.3s ease;
+}
+button{
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease,
+    opacity 0.2s ease;
+}
+
+/* Hover لجميع الأزرار */
+button:hover{
+  transform: scale(1.05);
+  box-shadow: 0 6px 16px rgba(0,0,0,0.25);
+  opacity: 0.95;
+}
+
+/* Click لجميع الأزرار */
+button:active{
+  transform: scale(0.95);
+}
+
 
   /* Cart mini at bottom right */
   .cart-btn{position:fixed;right:16px;bottom:16px;background:var(--black);color:var(--yellow);padding:12px;border-radius:12px;border:0;box-shadow:0 12px 30px rgba(0,0,0,0.35);z-index:50}
@@ -64,7 +138,132 @@
   .cart-item{display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px dashed #f2f2f2}
   .cart-footer{display:flex;justify-content:space-between;padding-top:8px;font-weight:800}
 
+.card {
+  max-width: fit-content;
+  border-radius: 15px;
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  justify-content: center;
+  gap: 1rem;
+  backdrop-filter: blur(15px);
+  box-shadow: inset 0 0 20px rgba(255, 255, 255, 0.192),
+    inset 0 0 5px rgba(255, 255, 255, 0.274), 0 5px 5px rgba(0, 0, 0, 0.164);
+  transition: 0.5s;
+}
 
+.card:hover {
+  animation: ease-out 5s;
+  background: rgba(173, 173, 173, 0.05);
+}
+
+.card ul {
+  padding: 1rem;
+  display: flex;
+  list-style: none;
+  gap: 1rem;
+  align-items: center;
+  justify-content: center;
+  align-content: center;
+  flex-wrap: wrap;
+  flex-direction: column;
+}
+
+.card ul li {
+  cursor: pointer;
+}
+
+.svg {
+  transition: all 0.3s;
+  /* if you find some problems change w - h : 30px*/
+  padding: 1rem;
+  height: 60px;
+  width: 60px;
+  border-radius: 100%;
+  color: rgb(255, 174, 0);
+  fill: currentColor;
+  box-shadow: inset 0 0 20px rgba(255, 255, 255, 0.3),
+    inset 0 0 5px rgba(255, 255, 255, 0.5), 0 5px 5px rgba(0, 0, 0, 0.164);
+}
+
+.text {
+  opacity: 0;
+  border-radius: 5px;
+  padding: 5px;
+  transition: all 0.3s;
+  color: rgb(255, 174, 0);
+  background-color: rgba(255, 255, 255, 0.3);
+  position: absolute;
+  z-index: 9999;
+  box-shadow: -5px 0 1px rgba(153, 153, 153, 0.2),
+    -10px 0 1px rgba(153, 153, 153, 0.2),
+    inset 0 0 20px rgba(255, 255, 255, 0.3),
+    inset 0 0 5px rgba(255, 255, 255, 0.5), 0 5px 5px rgba(0, 0, 0, 0.082);
+}
+
+/*isometric prooyection*/
+.iso-pro {
+  transition: 0.5s;
+}
+.iso-pro:hover a > .svg {
+  transform: translate(15px, -15px);
+  border-radius: 100%;
+}
+
+.iso-pro:hover .text {
+  opacity: 1;
+  transform: translate(25px, -2px) skew(-5deg);
+}
+
+.iso-pro:hover .svg {
+  transform: translate(5px, -5px);
+}
+
+.iso-pro span {
+  opacity: 0;
+  position: absolute;
+  color: #1877f2;
+  border-color: #1877f2;
+  box-shadow: inset 0 0 20px rgba(255, 255, 255, 0.3),
+    inset 0 0 5px rgba(255, 255, 255, 0.5), 0 5px 5px rgba(0, 0, 0, 0.164);
+  border-radius: 50%;
+  transition: all 0.3s;
+  height: 60px;
+  width: 60px;
+}
+
+.iso-pro:hover span {
+  opacity: 1;
+}
+
+.iso-pro:hover span:nth-child(1) {
+  opacity: 0.2;
+}
+
+.iso-pro:hover span:nth-child(2) {
+  opacity: 0.4;
+  transform: translate(5px, -5px);
+}
+
+.iso-pro:hover span:nth-child(3) {
+  opacity: 0.6;
+  transform: translate(10px, -10px);
+}
+ nav ul {
+            list-style: none;
+            display: flex;
+            gap: 2rem;
+        }
+ nav a {
+            color: hsl(0, 3%, 7%);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: #E67E22;
+        }
 
   /* small screens */
   @media (max-width:800px){
@@ -73,6 +272,16 @@
     .hero{padding:14px}
     .cart-panel{right:8px;left:8px;width:auto}
   }
+  @keyframes pop {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.25); }
+  100% { transform: scale(1); }
+}
+
+.add.added {
+  animation: pop 0.3s ease;
+}
+
 </style>
 </head>
 <body>
@@ -84,7 +293,15 @@
       <h1 id="restoName">Chicken La Canyada</h1>
       <p>قائمة الأطباق — طازج، سريع، بنكهة</p>
     </div>
-    <a href="contact.html" class=""></a>
+    <nav>
+            <ul>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="index.html#gallery">Gallery</a></li>
+                <li><a href="index.html#about">About</a></li>
+                <li><a href="first.html">Home</a></li>
+
+            </ul>
+        </nav>
   </header>
 
   <main class="container">
@@ -105,6 +322,27 @@
       <!-- Items injected by JS -->
     </section>
   </main>
+
+  <!-- About Section -->
+  <section id="about" style="padding:40px 16px;background:#f9f9f9;text-align:center;">
+    <h2 style="color:var(--black);margin-bottom:20px;">About Chicken La Canyada</h2>
+    <p style="max-width:600px;margin:0 auto;color:var(--muted);line-height:1.6;">
+      Welcome to Chicken La Canyada, where passion for authentic flavors meets culinary excellence. Our restaurant specializes in grilled chicken dishes made with fresh ingredients and traditional recipes. We pride ourselves on serving delicious, high-quality meals in a warm and inviting atmosphere. Whether you're dining in or ordering takeout, we guarantee a memorable experience.
+    </p>
+  </section>
+
+  <!-- Gallery Section -->
+  <section id="gallery" style="padding:40px 16px;background:#fff;text-align:center;">
+    <h2 style="color:var(--black);margin-bottom:20px;">Gallery</h2>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px;max-width:800px;margin:0 auto;">
+      <img src="g.png" alt="Grilled Chicken" style="width:100%;height:150px;object-fit:cover;border-radius:8px;">
+      <img src="c.png" alt="Chicken Wings" style="width:100%;height:150px;object-fit:cover;border-radius:8px;">
+      <img src="f.png" alt="Fries" style="width:100%;height:150px;object-fit:cover;border-radius:8px;">
+      <img src="B.png" alt="Chicken Burger" style="width:100%;height:150px;object-fit:cover;border-radius:8px;">
+      <img src="lemonde.png" alt="Lemonade" style="width:100%;height:150px;object-fit:cover;border-radius:8px;">
+      <img src="br.png" alt="Brownie" style="width:100%;height:150px;object-fit:cover;border-radius:8px;">
+    </div>
+  </section>
 
   <!-- Cart button and panel -->
   <button class="cart-btn" id="cartToggle">Cart 🧾 (<span id="cartCount">0</span>)</button>
@@ -144,7 +382,7 @@
     grid.innerHTML = '';
     list.forEach(it=>{
       const el = document.createElement('div');
-      el.className = 'card';
+      el.className = 'menu-card';
       el.innerHTML = `
         <div class="thumb" style="background-image:url('${it.img}');"></div>
         <div class="info">
@@ -177,11 +415,17 @@
 
   // add to cart
   grid.addEventListener('click', e=>{
-    if(e.target.matches('.add')){
-      const id = Number(e.target.dataset.id);
-      const item = menu.find(x=>x.id===id);
-      addToCart(item);
-    }
+if(e.target.matches('.add')){
+  const btn = e.target;
+  const id = Number(btn.dataset.id);
+  const item = menu.find(x=>x.id===id);
+
+  addToCart(item);
+
+  btn.classList.add('added');
+  setTimeout(()=>btn.classList.remove('added'),300);
+}
+
   });
   function addToCart(item){
     const found = cart.find(c=>c.id===item.id);
@@ -246,5 +490,46 @@
   // document.getElementById('restoName').textContent = 'اسم المطعم ديالك';
   // document.getElementById('logo').style.backgroundImage = "url('hero.jpg')";
 </script>
+
+<footer style="text-align:center;margin:20px 0;">
+  <div class="card">
+    <ul>
+      <li class="iso-pro">
+        <a href="https://www.facebook.com/ChickenLaCanyada" target="_blank">
+          <svg class="svg" viewBox="0 0 24 24">
+            <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+          </svg>
+          <span class="text">Facebook</span>
+        </a>
+        <span></span>
+        <span></span>
+        <span></span>
+      </li>
+      <li class="iso-pro">
+        <a href="https://www.instagram.com/ChickenLaCanyada" target="_blank">
+          <svg class="svg" viewBox="0 0 24 24">
+            <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+          </svg>
+          <span class="text">Instagram</span>
+        </a>
+        <span></span>
+        <span></span>
+        <span></span>
+      </li>
+      <li class="iso-pro">
+        <a href="https://wa.me/1234567890" target="_blank">
+          <svg class="svg" viewBox="0 0 24 24">
+            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893A11.821 11.821 0 0020.885 3.488"/>
+          </svg>
+          <span class="text">WhatsApp</span>
+        </a>
+        <span></span>
+        <span></span>
+        <span></span>
+      </li>
+    </ul>
+  </div>
+  <p>&copy; 2023 Chicken La Canyada. جميع الحقوق محفوظة.</p>
+</footer>
 </body>
 </html>
