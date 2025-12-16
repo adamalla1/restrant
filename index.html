@@ -342,6 +342,58 @@ button:active{
     justify-content: center;
   }
 }
+@media (max-width:600px){
+  .container{
+    backdrop-filter: blur(12px);
+    background: rgba(255,255,255,0.92);
+  }
+}
+@media (max-width: 600px){
+
+  /* نقص المسافة بين cards */
+  .grid{
+    gap: 8px;
+  }
+
+  .menu-card{
+    gap: 8px;
+    padding: 10px;
+  }
+
+  /* الزر + Add */
+  .add{
+    margin-top: 6px;
+    padding: 12px;
+  }
+
+  /* meta (السعر + الزر) */
+  .meta{
+    margin-top: 6px;
+    gap: 6px;
+  }
+
+  /* أزرار الكارت */
+  .cart-footer{
+    gap: 6px;
+  }
+
+  .cart-panel button{
+    padding: 10px;
+    font-size: 15px;
+  }
+
+  /* زر Cart floating */
+  .cart-btn{
+    padding: 10px 12px;
+    font-size: 14px;
+  }
+
+  /* أزرار header */
+  nav ul{
+    gap: 10px; /* كان كبير */
+  }
+
+}
 
 
 </style>
