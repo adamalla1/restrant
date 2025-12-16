@@ -348,49 +348,66 @@ button:active{
     background: rgba(255,255,255,0.92);
   }
 }
-@media (max-width: 600px){
+@media (max-width: 768px){
 
-  /* نقص المسافة بين cards */
-  .grid{
-    gap: 8px;
+  header{
+    padding: 10px 12px;
   }
+
+  header h1{
+    font-size: 18px;
+    line-height: 1.2;
+  }
+
+  header p{
+    font-size: 12px;
+  }
+
+  nav{
+    margin-top: 6px;
+  }
+
+  nav a{
+    font-size: 14px;
+    padding: 6px 8px;
+  }
+
+  .logo img{
+    width: 42px;
+    height: 42px;
+  }
+
+}
+@media (max-width: 768px){
 
   .menu-card{
-    gap: 8px;
-    padding: 10px;
-  }
-
-  /* الزر + Add */
-  .add{
-    margin-top: 6px;
+    margin-bottom: 10px;
     padding: 12px;
+    border-radius: 14px;
   }
 
-  /* meta (السعر + الزر) */
-  .meta{
-    margin-top: 6px;
-    gap: 6px;
+  .menu-card img{
+    width: 90px;
+    height: 90px;
+    object-fit: cover;
   }
 
-  /* أزرار الكارت */
-  .cart-footer{
-    gap: 6px;
+  .menu-card h3{
+    font-size: 16px;
   }
 
-  .cart-panel button{
-    padding: 10px;
-    font-size: 15px;
+  .menu-card p{
+    font-size: 13px;
   }
 
-  /* زر Cart floating */
+}
+@media (max-width: 768px){
+
   .cart-btn{
-    padding: 10px 12px;
+    bottom: 15px;
+    right: 15px;
+    padding: 10px 14px;
     font-size: 14px;
-  }
-
-  /* أزرار header */
-  nav ul{
-    gap: 10px; /* كان كبير */
   }
 
 }
